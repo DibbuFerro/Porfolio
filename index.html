@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucas Ferro - Porfolio</title>
+    <link rel="stylesheet" href="./resources/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="preloader">
+        <div class="pre-inner">
+            <div class="pre-logo">Lucas Ferro</div>
+            <div class="pre-logo"><span>Porfolio</span></div>
+            <div class="pre-bar"><span></span></div>
+        </div>
+    </div>
+
+    <div class="cursor-dot" id="curDot"></div>
+    <div class="cursor-ring" id="curRing"></div>
+
+    <header class="header"></header>
+
+    <main class="main">
+
+        <section class="modal" id="welcome">
+            <div class="modal-content modal-sm d-flex justify-content-center align-items-center flex-column row-gap-10">
+                <h2 class="font-serif text-center color-primary">¡Bienvenido!</h2>
+                <div class="d-flex column-gap-15 justify-content-center" id="web-selector">
+                    <button class="btn btn-primary font-serif" id="btn-web">Web clasica</button>
+                    <button class="btn btn-primary font-serif" id="btn-game">Juego</button>
+                </div>
+                <div class="game-mode-selected d-flex justify-content-center align-items-center flex-column row-gap-10" id="game-mode-selected">
+                    <p class="font-sans text-center">Mi porfolio es un poco diferente al estándar.</p>
+                    <p class="font-sans text-center mb-2">Es un <b class="color-primary">Juego</b>, a medida que vayas superando los niveles, podrás ver más sobre mí.</p>
+                    <button class="font-serif btn btn-primary close" id="startGame">Comenzar</button>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="game-mode vh-100 position-relative">
+
+            <section class="modal" id="levelModal">
+                <div class="modal-content modal-sm d-flex justify-content-center align-items-center flex-column row-gap-10">
+                    <h2 class="font-serif text-center color-primary" id="modalTitle">¡Nivel Completado!</h2>
+                    <div id="modalInfo" class="font-sans text-center"></div>
+                    <button id="nextLevelBtn" class="font-serif btn btn-primary close">Siguiente Nivel</button>
+                </div>
+            </section>
+
+            <canvas id="gameCanvas"></canvas>
+        </section>
+    </main>
+
+    <footer class="footer"></footer>
+
+    <script src="./resources/js/scripts.js"></script>
+    <script src="./resources/js/game-script.js"></script>
+</body>
+</html>
