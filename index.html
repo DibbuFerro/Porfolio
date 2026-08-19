@@ -44,11 +44,30 @@
 
         <section class="game-mode vh-100 position-relative">
 
+            <button id="pauseBtn" class="font-serif btn btn-primary">Pausa</button>
+            <div class="pause-overlay" id="pauseOverlay">
+                <p class="font-serif color-primary">PAUSADO</p>
+            </div>
+            
+            <div class="game-ui">
+                <span class="font-serif color-primary" id="uiLevel">Nivel 1</span>
+                <span class="font-sans" id="uiScore">Score: 0</span>
+            </div>
+
             <section class="modal" id="levelModal">
                 <div class="modal-content modal-sm d-flex justify-content-center align-items-center flex-column row-gap-10">
                     <h2 class="font-serif text-center color-primary" id="modalTitle">¡Nivel Completado!</h2>
+                    <p id="modalUpgrade" class="font-sans text-center color-primary"></p>
                     <div id="modalInfo" class="font-sans text-center"></div>
                     <button id="nextLevelBtn" class="font-serif btn btn-primary close">Siguiente Nivel</button>
+                </div>
+            </section>
+            <section class="modal" id="gameOverModal">
+                <div class="modal-content modal-sm d-flex justify-content-center align-items-center flex-column row-gap-10">
+                    <h2 class="font-serif text-center color-primary">Game Over</h2>
+                    <p class="font-sans text-center" id="finalScore">Score: 0</p>
+                    <p class="font-sans text-center" id="finalLevel">Nivel alcanzado: 1</p>
+                    <button id="restartBtn" class="font-serif btn btn-primary">Volver a jugar</button>
                 </div>
             </section>
 

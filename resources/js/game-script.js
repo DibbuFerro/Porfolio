@@ -16,16 +16,22 @@ let score = 0;
 let gameOver = false;
 let level = 1;
 let isPaused = false;
-
-// Variables de control de bucles (GLOBALES)
 let spawnInterval = null;
 let animationFrameId = null;
-
 let playerColor = '#d43792';
 let playerTargetColor = '#d43792';
 let colorTransition = 1;
+let mouseDown = false;
+let autoShootInterval = null;
 
-const pointsPerLevel = 100;
+
+const pointsPerLevel = 100 ;
+
+const upgrades = {
+    doubleShot: false, 
+    autoShoot: false, 
+    projectileLevel: 1  
+};
 
 var player = {
     x: canvas.width / 2,
@@ -44,35 +50,60 @@ canvas.addEventListener('mousemove', (e) => {
     mouse.y = e.clientY;
 });
 
-canvas.addEventListener('click', () => {
-    if (gameOver || isPaused) return;
+canvas.addEventListener('click', shoot);
 
-    const angle = Math.atan2(
-        mouse.y - player.y,
-        mouse.x - player.x
-    );
+canvas.addEventListener('mousedown', () => {
+    mouseDown = true;
+    if (upgrades.autoShoot) {
+        autoShootInterval = setInterval(shoot, 200);
+    }
+});
 
-    const speed = 8;
-
-    projectiles.push({
-        x: player.x,
-        y: player.y,
-        width: 8,
-        height: 3,
-        angle: angle,
-        velocity: {
-            x: Math.cos(angle) * speed,
-            y: Math.sin(angle) * speed
-        }
-    });
+canvas.addEventListener('mouseup', () => {
+    mouseDown = false;
+    clearInterval(autoShootInterval);
 });
 
 function checkLevelUp() {
     if (score >= level * pointsPerLevel) {
         level++;
+        applyLevelUpgrades();
         isPaused = true;
+        enemies = [];
+        projectiles = [];
         clearInterval(spawnInterval);
+
         showModal();
+    }
+}
+
+function shoot() {
+    if (gameOver || isPaused) return;   
+
+    const angle = Math.atan2(mouse.y - player.y, mouse.x - player.x);
+    const speed = 8;
+
+    projectiles.push({
+        x: player.x,
+        y: player.y,
+        angle,
+        velocity: {
+            x: Math.cos(angle) * speed,
+            y: Math.sin(angle) * speed
+        }
+    });
+
+    if (upgrades.doubleShot) {
+        const offset = 0.15; 
+        projectiles.push({
+            x: player.x,
+            y: player.y,
+            angle: angle + offset,
+            velocity: {
+                x: Math.cos(angle + offset) * speed,
+                y: Math.sin(angle + offset) * speed
+            }
+        });
     }
 }
 
@@ -163,18 +194,26 @@ function drawSquareEnemy(x, y, radius){
 }
 
 const levelInfo = {
-    2: { title: '¡Nivel 2!', text: 'Información genérica sobre mí. Nivel 2.' },
-    3: { title: '¡Nivel 3!', text: 'Información genérica sobre mí. Nivel 3.' },
-    4: { title: '¡Nivel 4!', text: 'Información genérica sobre mí. Nivel 4.' },
-    5: { title: '¡Nivel 5!', text: 'Información genérica sobre mí. Nivel 5.' },
+    2: { title: '¡Nivel 2!', text: 'Info genérica.', upgrade: '☆ Doble disparo desbloqueado' },
+    3: { title: '¡Nivel 3!', text: 'Info genérica.', upgrade: '☆ Disparo automático desbloqueado' },
+    4: { title: '¡Nivel 4!', text: 'Info genérica.', upgrade: '☆ Proyectil circular desbloqueado' },
+    5: { title: '¡Nivel 5!', text: 'Info genérica.', upgrade: '☆ Proyectil triangular desbloqueado' },
 };
+
+function applyLevelUpgrades() {
+    if (level === 2) upgrades.doubleShot = true;
+    if (level === 3) upgrades.autoShoot = true;
+    if (level === 4) upgrades.projectileLevel = 2;
+    if (level === 5) upgrades.projectileLevel = 3;
+}
 
 function showModal() {
     const modal = document.getElementById('levelModal');
-    const info = levelInfo[level] || { title: '¡Seguís jugando!', text: 'El juego continúa...' };
+    const info = levelInfo[level] || { title: '¡Seguís jugando!', text: 'El juego continúa...', upgrade: '' };
 
     document.getElementById('modalTitle').textContent = info.title;
     document.getElementById('modalInfo').textContent = info.text;
+    document.getElementById('modalUpgrade').textContent = info.upgrade || '';
     modal.classList.add('active');
 }
 
@@ -185,8 +224,50 @@ document.getElementById('nextLevelBtn').addEventListener('click', () => {
     spawnInterval = setInterval(spawnEnemy, Math.max(400, 1500 - level * 150));
 });
 
+
+document.getElementById('restartBtn').addEventListener('click', () => {
+    document.getElementById('gameOverModal').classList.remove('active');
+    document.getElementById('pauseOverlay').classList.remove('active');
+
+    clearInterval(spawnInterval);
+    if (animationFrameId) cancelAnimationFrame(animationFrameId);
+
+    projectiles = [];
+    enemies = [];
+    score = 0;
+    level = 1;
+    gameOver = false;
+    isPaused = false;
+    playerColor = '#d43792';
+    playerTargetColor = '#d43792';
+    colorTransition = 1;
+    upgrades.doubleShot = false;
+    upgrades.autoShoot = false;
+    upgrades.projectileLevel = 1;
+    player.x = canvas.width / 2;
+    player.y = canvas.height / 2;
+
+    spawnInterval = setInterval(spawnEnemy, 2000);
+    animate();
+});
+
+document.getElementById('pauseBtn').addEventListener('click', () => {
+    if (gameOver) return;
+
+    isPaused = !isPaused;
+    document.getElementById('pauseBtn').textContent = isPaused ? 'Continuar' : 'Pausa';
+    document.getElementById('pauseOverlay').classList.toggle('active');
+
+    if (!isPaused) {
+        spawnInterval = setInterval(spawnEnemy, Math.max(400, 1500 - level * 150));
+    } else {
+        clearInterval(spawnInterval);
+    }
+});
+
 function animate(){
     animationFrameId = requestAnimationFrame(animate);
+
     if (gameOver || isPaused) return;
 
     // Transición de color del jugador
@@ -226,17 +307,29 @@ function animate(){
         ctx.translate(proj.x, proj.y);
         ctx.rotate(proj.angle);
 
-        ctx.fillStyle = playerColor; 
+        ctx.fillStyle = playerColor;
         ctx.shadowColor = playerColor;
         ctx.shadowBlur = 10;
-        ctx.fillRect(-proj.width / 2, -proj.height / 2, proj.width, proj.height);
+
+        if (upgrades.projectileLevel === 1) {
+            ctx.fillRect(-8, -3, 16, 6);
+        } else if (upgrades.projectileLevel === 2) {
+            ctx.beginPath();
+            ctx.arc(0, 0, 6, 0, Math.PI * 2);
+            ctx.fill();
+        } else if (upgrades.projectileLevel === 3) {
+            ctx.beginPath();
+            ctx.moveTo(0, -8);
+            ctx.lineTo(-6, 6);
+            ctx.lineTo(6, 6);
+            ctx.closePath();
+            ctx.fill();
+        }
 
         ctx.restore();
 
-        if (
-            proj.x < 0 || proj.x > canvas.width ||
-            proj.y < 0 || proj.y > canvas.height
-        ) {
+        if (proj.x < 0 || proj.x > canvas.width ||
+            proj.y < 0 || proj.y > canvas.height) {
             projectiles.splice(index, 1);
         }
     });
@@ -249,7 +342,7 @@ function animate(){
 
         if (checkCollision(player.x, player.y, player.radius, enemy.x, enemy.y, enemy.radius)) {
             gameOver = true;
-            clearInterval(spawnInterval); // Detener generación al perder
+            clearInterval(spawnInterval);
         }
 
         ctx.save();
@@ -260,16 +353,14 @@ function animate(){
         if(enemy.type === 'square') drawSquareEnemy(enemy.x, enemy.y, enemy.radius);
         ctx.restore();
 
-        // Colisiones proyectil-enemigo
         projectiles.forEach((proj, pIndex) => {
             if(checkCollision(proj.x, proj.y, 5, enemy.x, enemy.y, enemy.radius)){
-                enemy.hp -= 1;
+                enemy.hp -= upgrades.projectileLevel;
                 projectiles.splice(pIndex, 1);
 
                 if (enemy.hp <= 0){
                     playerTargetColor = enemy.color;
                     colorTransition = 0;
-
                     enemies.splice(eIndex, 1);
                     score += 10;
                     checkLevelUp();
@@ -278,24 +369,14 @@ function animate(){
         });
     });
 
-    // Score UI
-    ctx.fillStyle = playerColor;
-    ctx.font = 'bold 25px Quicksand';
-    ctx.textAlign = 'left';
-    ctx.fillText('Score: ' + score, 20, 40);
+    document.getElementById('uiScore').textContent = 'Score: ' + score;
+    document.getElementById('uiLevel').textContent = 'Nivel ' + level;
 
-    // Pantalla de Game Over
     if (gameOver) {
-        ctx.fillStyle = 'rgba(0,0,0,0.6)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        ctx.fillStyle = '#ffffff';
-        ctx.font = 'bold 48px Quicksand';
-        ctx.textAlign = 'center';
-        ctx.fillText('GAME OVER', canvas.width / 2, canvas.height / 2);
-
-        ctx.font = '24px Quicksand';
-        ctx.fillText('Score: ' + score, canvas.width / 2, canvas.height / 2 + 50);
+        document.getElementById('finalScore').textContent = 'Score: ' + score;
+        document.getElementById('finalLevel').textContent = 'Nivel alcanzado: ' + level;
+        document.getElementById('gameOverModal').classList.add('active');
+        return;
     }
 
     document.documentElement.style.setProperty('--color-primary', playerColor);
@@ -318,6 +399,9 @@ startBtn.addEventListener('click', () => {
     isPaused = false;
     player.x = canvas.width / 2;
     player.y = canvas.height / 2;
+
+    document.getElementById('pauseBtn').style.display = 'block';
+    document.querySelector('.game-ui').style.display = 'flex';
 
     // 2. Iniciar timers y animación
     spawnInterval = setInterval(spawnEnemy, 2000);
