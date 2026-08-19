@@ -161,24 +161,3 @@ webBtn.addEventListener('click', () => {
         webMode.style.display = 'flex';
     }
 });
-
-
-
-// ==========================================
-// MULTI-ROW ACCORDION ISOLATED INTERACTION
-// ==========================================
-const accordions = document.querySelectorAll('.editorial-accordion');
-
-accordions.forEach(accordion => {
-    const rowItems = accordion.querySelectorAll('.accordion-item');
-
-    rowItems.forEach(item => {
-        const activateItem = () => {
-            rowItems.forEach(i => i.classList.remove('active'));
-            item.classList.add('active');
-        };
-
-        item.addEventListener('mouseenter', activateItem);
-        item.addEventListener('click', activateItem);
-    });
-});

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucas Ferro — Fullstack & Creative Developer</title>
+    <link rel="stylesheet" href="./resources/css/style-test.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="preloader">
+        <div class="pre-inner">
+            <div class="pre-logo">Lucas Ferro</div>
+            <div class="pre-logo"><span>Porfolio</span></div>
+            <div class="pre-bar"><span></span></div>
+        </div>
+    </div>
+
+    <div class="cursor-dot" id="curDot"></div>
+    <div class="cursor-ring" id="curRing"></div>
+
+    <main class="main">
+
+        <!-- Modal de bienvenida -->
+        <section class="modal" id="welcome">
+            <div class="modal-content modal-sm d-flex justify-content-center align-items-center flex-column row-gap-10">
+                <h2 class="font-serif text-center color-primary">¡Bienvenido!</h2>
+                <div class="d-flex column-gap-15 justify-content-center" id="web-selector">
+                    <button class="btn btn-primary font-serif" id="btn-web">Web clásica</button>
+                    <button class="btn btn-primary font-serif" id="btn-game">Juego</button>
+                </div>
+                <div class="game-mode-selected d-flex justify-content-center align-items-center flex-column row-gap-10" id="game-mode-selected">
+                    <p class="font-sans text-center">Mi porfolio es un poco diferente al estándar.</p>
+                    <p class="font-sans text-center mb-2">Es un <b class="color-primary">Juego</b>, a medida que vayas superando los niveles, podrás ver más sobre mí.</p>
+                    <button class="font-serif btn btn-primary close" id="startGame">Comenzar</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modo juego -->
+        <section class="game-mode vh-100 position-relative" id="gameMode" style="display: none;">
+
+            <button id="pauseBtn" class="font-serif btn btn-primary">Pausa</button>
+            <div class="pause-overlay" id="pauseOverlay">
+                <p class="font-serif color-primary">PAUSADO</p>
+            </div>
+            
+            <div class="game-ui">
+                <span class="font-serif color-primary" id="uiLevel">Nivel 1</span>
+                <span class="font-sans" id="uiScore">Score: 0</span>
+            </div>
+
+            <section class="modal" id="levelModal">
+                <div class="modal-content modal-sm d-flex justify-content-center align-items-center flex-column row-gap-10">
+                    <h2 class="font-serif text-center color-primary" id="modalTitle">¡Nivel Completado!</h2>
+                    <p id="modalUpgrade" class="font-sans text-center color-primary"></p>
+                    <div id="modalInfo" class="font-sans text-center"></div>
+                    <button id="nextLevelBtn" class="font-serif btn btn-primary close">Siguiente Nivel</button>
+                </div>
+            </section>
+
+            <section class="modal" id="gameOverModal">
+                <div class="modal-content modal-sm d-flex justify-content-center align-items-center flex-column row-gap-10">
+                    <h2 class="font-serif text-center color-primary">Game Over</h2>
+                    <p class="font-sans text-center" id="finalScore">Score: 0</p>
+                    <p class="font-sans text-center" id="finalLevel">Nivel alcanzado: 1</p>
+                    <button id="restartBtn" class="font-serif btn btn-primary">Volver a jugar</button>
+                </div>
+            </section>
+
+            <canvas id="gameCanvas"></canvas>
+        </section>
+
+        <!-- Hero editorial (web clásica) -->
+        <header class="hero-editorial" id="web-mode" style="display: none;">
+            <div class="ambient-glow"></div>
+
+            <div class="meta-bar">
+                <div class="meta-cluster">
+                    <span class="pulse-status"></span>
+                    <span class="mono-label">DISPONIBLE PARA PROYECTOS</span>
+                </div>
+                <div class="meta-cluster hide-mobile">
+                    <span class="mono-label">BUENOS AIRES, AR</span>
+                    <span class="separator">/</span>
+                    <span class="mono-label">UTC-3</span>
+                </div>
+                <div class="meta-cluster">
+                    <span class="mono-label accent-text">ENG C1 — ESP NATIVO</span>
+                </div>
+            </div>
+
+            <div class="hero-main">
+                <div class="title-wrap">
+                    <h1 class="name-first">LUCAS</h1>
+                    <h1 class="name-last">FERRO<span class="accent-dot">.</span></h1>
+                </div>
+
+                <div class="hero-grid-content">
+                    <div class="role-column">
+                        <p class="role-title">
+                            FULLSTACK <span class="ampersand">&amp;</span><br>CREATIVE DEVELOPER
+                        </p>
+                    </div>
+                    <div class="bio-column">
+                        <p class="bio-text">
+                            Diseño y desarrollo productos digitales de alto nivel. Integrando la precisión de <strong class="dynamic-underline">arquitecturas backend</strong> sólidas con la expresividad de <strong class="dynamic-underline">interfaces frontend interactivas</strong>.
+                        </p>
+                        <div class="cta-group">
+                            <a href="#proyectos" class="btn-editorial primary">
+                                EXPLORAR TRABAJOS <span class="arrow">→</span>
+                            </a>
+                            <a href="#cv" class="btn-editorial secondary">
+                                DESCARGAR CV
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metrics-strip">
+                <div class="metric-box">
+                    <span class="metric-num">+04</span>
+                    <span class="metric-desc">AÑOS DE EXPERIENCIA EN PRODUCCIÓN</span>
+                </div>
+                <div class="metric-box">
+                    <span class="metric-num">+10</span>
+                    <span class="metric-desc">AÑOS LIDERANDO Y GESTIONANDO EQUIPOS</span>
+                </div>
+                <div class="metric-box">
+                    <span class="metric-num">100%</span>
+                    <span class="metric-desc">ENFOQUE EN PERFORMANCE &amp; CÓDIGO LIMPIO</span>
+                </div>
+            </div>
+        </header>
+        
+    </main>
+
+    <footer class="footer"></footer>
+
+    <script src="./resources/js/scripts-test.js"></script>
+    <script src="./resources/js/game-script.js"></script>
+</body>
+</html>

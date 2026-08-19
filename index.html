@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lucas Ferro - Porfolio</title>
+    <title>Lucas Ferro — Fullstack & Creative Developer</title>
     <link rel="stylesheet" href="./resources/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div id="preloader">
         <div class="pre-inner">
-            <div class="pre-logo">Lucas Ferro</div>
-            <div class="pre-logo"><span>Porfolio</span></div>
+            <div class="pre-logo text-uppercase font-serif">LUCAS FERRO</div>
+            <div class="pre-logo text-uppercase font-serif"><span>PORFOLIO</span></div>
             <div class="pre-bar"><span></span></div>
         </div>
     </div>
@@ -22,27 +22,25 @@
     <div class="cursor-dot" id="curDot"></div>
     <div class="cursor-ring" id="curRing"></div>
 
-    <header class="header"></header>
-
     <main class="main">
 
+        <!-- Modal de bienvenida -->
         <section class="modal" id="welcome">
             <div class="modal-content modal-sm d-flex justify-content-center align-items-center flex-column row-gap-10">
-                <h2 class="font-serif text-center color-primary">¡Bienvenido!</h2>
+                <h2 class="font-serif text-uppercase text-center color-primary title-style">¡Bienvenido!</h2>
                 <div class="d-flex column-gap-15 justify-content-center" id="web-selector">
-                    <button class="btn btn-primary font-serif" id="btn-web">Web clasica</button>
-                    <button class="btn btn-primary font-serif" id="btn-game">Juego</button>
+                    <button class="btn btn-primary" id="btn-web">Web clásica</button>
+                    <button class="btn btn-primary" id="btn-game">Juego</button>
                 </div>
                 <div class="game-mode-selected d-flex justify-content-center align-items-center flex-column row-gap-10" id="game-mode-selected">
                     <p class="font-sans text-center">Mi porfolio es un poco diferente al estándar.</p>
                     <p class="font-sans text-center mb-2">Es un <b class="color-primary">Juego</b>, a medida que vayas superando los niveles, podrás ver más sobre mí.</p>
                     <button class="font-serif btn btn-primary close" id="startGame">Comenzar</button>
                 </div>
-
             </div>
         </section>
 
-        <section class="game-mode vh-100 position-relative">
+        <section class="game-mode vh-100 position-relative" id="gameMode" style="display: none;">
 
             <button id="pauseBtn" class="font-serif btn btn-primary">Pausa</button>
             <div class="pause-overlay" id="pauseOverlay">
@@ -62,6 +60,7 @@
                     <button id="nextLevelBtn" class="font-serif btn btn-primary close">Siguiente Nivel</button>
                 </div>
             </section>
+
             <section class="modal" id="gameOverModal">
                 <div class="modal-content modal-sm d-flex justify-content-center align-items-center flex-column row-gap-10">
                     <h2 class="font-serif text-center color-primary">Game Over</h2>
@@ -73,6 +72,274 @@
 
             <canvas id="gameCanvas"></canvas>
         </section>
+
+        <!-- Hero editorial (web clásica) -->
+        <nav id="nav">
+            <ul class="navbar d-flex justify-content-between align-items-center">
+                <li class="logo"><span class="font-serif color-white">L</span><span class="font-serif color-white">F</span></li>
+                <li><a href="#" class="mono-label">Sobre mi</a></li>
+                <li><a href="#" class="mono-label">Tecnologias</a></li>
+                <li><a href="#" class="mono-label">Trabajos</a></li>
+                <li><a href="#" class="mono-label">Contacto</a></li>
+            </ul>
+        </nav>
+        <header class="hero-editorial" id="web-mode" style="display: none;">
+            <div class="ambient-glow"></div>
+
+            <div class="meta-bar">
+                <div class="meta-cluster">
+                    <span class="pulse-status"></span>
+                    <span class="mono-label">DISPONIBLE PARA PROYECTOS</span>
+                </div>
+                <div class="meta-cluster hide-mobile">
+                    <span class="mono-label">BUENOS AIRES, AR</span>
+                    <span class="separator">/</span>
+                    <span class="mono-label">UTC-3</span>
+                </div>
+                <div class="meta-cluster">
+                    <span class="mono-label accent-text">ENG C1 — ESP NATIVO</span>
+                </div>
+            </div>
+
+            <div class="hero-main">
+                <div class="title-wrap">
+                    <h1 class="name-first">LUCAS</h1>
+                    <h1 class="name-last">FERRO<span class="accent-dot">.</span></h1>
+                </div>
+
+                <div class="hero-grid-content">
+                    <div class="role-column">
+                        <p class="role-title">
+                            FULLSTACK <span class="ampersand">&amp;</span><br>CREATIVE DEVELOPER
+                        </p>
+                    </div>
+                    <div class="bio-column">
+                        <p class="bio-text">
+                            Diseño y desarrollo productos digitales de alto nivel. Integrando la precisión de <strong class="dynamic-underline">arquitecturas backend</strong> sólidas con la expresividad de <strong class="dynamic-underline">interfaces frontend interactivas</strong>.
+                        </p>
+                        <div class="cta-group">
+                            <a href="#proyectos" class="btn-editorial primary">
+                                EXPLORAR TRABAJOS <span class="arrow">→</span>
+                            </a>
+                            <a href="#cv" class="btn-editorial secondary">
+                                DESCARGAR CV
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metrics-strip">
+                <div class="metric-box">
+                    <span class="metric-num">+04</span>
+                    <span class="metric-desc">AÑOS DE EXPERIENCIA EN PRODUCCIÓN</span>
+                </div>
+                <div class="metric-box">
+                    <span class="metric-num">+10</span>
+                    <span class="metric-desc">AÑOS LIDERANDO Y GESTIONANDO EQUIPOS</span>
+                </div>
+                <div class="metric-box">
+                    <span class="metric-num">100%</span>
+                    <span class="metric-desc">ENFOQUE EN PERFORMANCE &amp; CÓDIGO LIMPIO</span>
+                </div>
+            </div>
+        </header>
+       
+
+        <section class="innovative-slider-section" id="proyectos">
+    
+            <div class="slider-header">
+                <div class="header-info">
+                    <h2 class="section-title">PROYECTOS<span class="accent-dot">.</span></h2>
+                </div>
+                <div class="slider-instructions font-mono mb-5">
+                    <span>[ PASA EL CURSOR PARA EXPANDIR EN CADA FILA ]</span>
+                </div>
+            </div>
+
+            <!-- CONTENEDOR DE FILAS (FLEX COLUMN) -->
+            <div class="rows-wrapper">
+
+                <!-- FILA 01 (Proyectos 01 al 05) -->
+                <div class="editorial-accordion">
+                    <article class="accordion-item active">
+                        <div class="card-image">
+                            <img src="./resources/assets/wikilemon.png" alt="Wiki Lemon" class="img-fluid img-cover" >
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta font-mono"><span>01/15</span><span>FULLSTACK</span></div>
+                            <h3 class="card-title">Lemon Wiki</h3>
+                            <p class="card-desc">Arquitectura y migración masiva de datos integrando WordPress con API Laravel.</p>
+                            <div class="card-tags font-mono"><span>LARAVEL</span><span>WP API</span><span>MYSQL</span></div>
+                            <a href="https://wiki.lemon.me/es-ar" target="_blank" class="btn-editorial primary">VISITAR SITIO →</a>
+                        </div>
+                    </article>
+
+                    <article class="accordion-item">
+                        <div class="card-image"><img src="./resources/assets/contabilium.png" alt="Contabilium" class="img-fluid img-cover" ><div class="image-overlay"></div></div>
+                        <div class="card-content">
+                            <div class="card-meta font-mono"><span>02/15</span><span>FULLSTACK</span></div>
+                            <h3 class="card-title">Contabilium</h3>
+                            <p class="card-desc">Arquitectura CMS personalizada reactiva y multilingüe para gestión contable.</p>
+                            <div class="card-tags font-mono"><span>LARAVEL</span><span>LIVEWIRE</span></div>
+                            <a href="https://contabilium.com/ar" target="_blank" class="btn-editorial primary">VISITAR SITIO →</a>
+                        </div>
+                    </article>
+
+                    <article class="accordion-item">
+                        <div class="card-image"><img src="./resources/assets/ker.png" alt="Ker Hoteles" class="img-fluid img-cover" ><div class="image-overlay"></div></div>
+                        <div class="card-content">
+                            <div class="card-meta font-mono"><span>03/15</span><span>BOOKING</span></div>
+                            <h3 class="card-title">Ker Hoteles</h3>
+                            <p class="card-desc">Plataforma web con motor de reservas mediante APIs externas.</p>
+                            <div class="card-tags font-mono"><span>LARAVEL</span><span>UX/UI</span></div>
+                            <a href="https://kerhoteles.com.ar" target="_blank" class="btn-editorial primary">VISITAR SITIO →</a>
+                        </div>
+                    </article>
+
+                    <article class="accordion-item">
+                        <div class="card-image"><img src="./resources/assets/pem.png" alt="Por El Mar" class="img-fluid img-cover" ><div class="image-overlay"></div></div>
+                        <div class="card-content">
+                            <div class="card-meta font-mono"><span>04/15</span><span>PERFORMANCE</span></div>
+                            <h3 class="card-title">Por El Mar</h3>
+                            <p class="card-desc">Desarrollo de interfaz y optimización de rendimiento backend.</p>
+                            <div class="card-tags font-mono"><span>FRONTEND</span><span>LARAVEL</span></div>
+                            <a href="https://www.porelmar.org/" target="_blank" class="btn-editorial primary">VISITAR SITIO →</a>
+                        </div>
+                    </article>
+
+                    <article class="accordion-item">
+                        <div class="card-image"><img src="./resources/assets/civile.png" alt="Civile Propiedades" class="img-fluid img-cover" ><div class="image-overlay"></div></div>
+                        <div class="card-content">
+                            <div class="card-meta font-mono"><span>05/15</span><span>REAL ESTATE</span></div>
+                            <h3 class="card-title">Civile Propiedades</h3>
+                            <p class="card-desc">Plataforma inmobiliaria con motor de búsqueda y SEO técnico.</p>
+                            <div class="card-tags font-mono"><span>LARAVEL</span><span>SEO</span></div>
+                            <a href="https://civilepropiedades.com.ar/" target="_blank" class="btn-editorial primary">VISITAR SITIO →</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- FILA 02 (Proyectos 06 al 10) -->
+                <div class="editorial-accordion">
+                    <article class="accordion-item active">
+                        <div class="card-image"><img src="./resources/assets/twist.png" alt="Twist Naples" class="img-fluid img-cover" ><div class="image-overlay"></div></div>
+                        <div class="card-content">
+                            <div class="card-meta font-mono"><span>06/15</span><span>WEB APP</span></div>
+                            <h3 class="card-title">Twist Naples</h3>
+                            <p class="card-desc">Plataforma web a medida con optimización SEO y MySQL.</p>
+                            <div class="card-tags font-mono"><span>LARAVEL</span><span>MYSQL</span></div>
+                            <a href="https://twistnaples.com/" target="_blank" class="btn-editorial primary">VISITAR SITIO →</a>
+                        </div>
+                    </article>
+
+                    <article class="accordion-item">
+                        <div class="card-image"><img src="./resources/assets/serargentino.png" alt="Ser Argentino" class="img-fluid img-cover" ><div class="image-overlay"></div></div>
+                        <div class="card-content">
+                            <div class="card-meta font-mono"><span>07/15</span><span>MEDIA</span></div>
+                            <h3 class="card-title">Ser Argentino</h3>
+                            <p class="card-desc">Mantenimiento evolutivo para portal de alto tráfico.</p>
+                            <div class="card-tags font-mono"><span>LARAVEL</span><span>PHP</span></div>
+                            <a href="https://www.serargentino.com/" target="_blank" class="btn-editorial primary">VISITAR SITIO →</a>
+                        </div>
+                    </article>
+
+                    <article class="accordion-item">
+                        <div class="card-image"><img src="./resources/assets/novecento.png" alt="Novecento" class="img-fluid img-cover" ><div class="image-overlay"></div></div>
+                        <div class="card-content">
+                            <div class="card-meta font-mono"><span>08/15</span><span>CREATIVE DEV</span></div>
+                            <h3 class="card-title">Novecento</h3>
+                            <p class="card-desc">Interfaz interactiva y soporte en arquitectura backend.</p>
+                            <div class="card-tags font-mono"><span>FRONTEND</span><span>LARAVEL</span></div>
+                            <a href="https://www.novecentocompany.com/" target="_blank" class="btn-editorial primary">VISITAR SITIO →</a>
+                        </div>
+                    </article>
+
+                    <article class="accordion-item">
+                        <div class="card-image"><img src="./resources/assets/generalisima.png" alt="Generalísimo" class="img-fluid img-cover" ><div class="image-overlay"></div></div>
+                        <div class="card-content">
+                            <div class="card-meta font-mono"><span>09/15</span><span>GAME DEV</span></div>
+                            <h3 class="card-title">Generalísimo</h3>
+                            <p class="card-desc">Juego de navegador reactivo en tiempo real con Livewire.</p>
+                            <div class="card-tags font-mono"><span>LIVEWIRE</span><span>PHP</span></div>
+                        </div>
+                    </article>
+
+                    <article class="accordion-item active">
+                        <div class="card-image"><img src="./resources/assets/pinco.png" alt="Pinco" class="img-fluid img-cover" ><div class="image-overlay"></div></div>
+                        <div class="card-content">
+                            <div class="card-meta font-mono"><span>10/15</span><span>CMS</span></div>
+                            <h3 class="card-title">Pinco Coaching</h3>
+                            <p class="card-desc">Sitio institucional WordPress con maquetación a medida.</p>
+                            <div class="card-tags font-mono"><span>WORDPRESS</span><span>FRONTEND</span></div>
+                            <a href="https://pinco-coaching.com/" target="_blank" class="btn-editorial primary">VISITAR SITIO →</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- FILA 03 (Proyectos 11 al 15) -->
+                <div class="editorial-accordion">
+                
+                    <article class="accordion-item">
+                        <div class="card-image"><img src="./resources/assets/construmax.png" alt="ConstruMax" class="img-fluid img-cover" ><div class="image-overlay"></div></div>
+                        <div class="card-content">
+                            <div class="card-meta font-mono"><span>11/15</span><span>ECOMMERCE</span></div>
+                            <h3 class="card-title">ConstruMax</h3>
+                            <p class="card-desc">Interfaz para plataforma de corralon.</p>
+                            <div class="card-tags font-mono"><span>FRONTEND</span><span>JS ES6+</span></div>
+                            <a href="https://dibbuferro.github.io/ConstruMax/" target="_blank" class="btn-editorial primary">DEMO EN VIVO →</a>
+                        </div>
+                    </article>
+
+                    <article class="accordion-item">
+                        <div class="card-image"><img src="./resources/assets/apex.png" alt="Apex Training" class="img-fluid img-cover" ><div class="image-overlay"></div></div>
+                        <div class="card-content">
+                            <div class="card-meta font-mono"><span>12/15</span><span>FITNESS</span></div>
+                            <h3 class="card-title">Apex Training</h3>
+                            <p class="card-desc">Interfaz para plataforma de entrenamiento adaptativa.</p>
+                            <div class="card-tags font-mono"><span>FRONTEND</span><span>JS ES6+</span></div>
+                            <a href="https://dibbuferro.github.io/ApexTraining/" target="_blank" class="btn-editorial primary">DEMO EN VIVO →</a>
+                        </div>
+                    </article>
+
+                    <article class="accordion-item">
+                        <div class="card-image"><img src="./resources/assets/maison.png" alt="Maison Noir" class="img-fluid img-cover" ><div class="image-overlay"></div></div>
+                        <div class="card-content">
+                            <div class="card-meta font-mono"><span>13/15</span><span>LUXURY</span></div>
+                            <h3 class="card-title">Maison Noir</h3>
+                            <p class="card-desc">Maquetación editorial para marca de barberia alta gama.</p>
+                            <div class="card-tags font-mono"><span>FRONTEND</span><span>EDITORIAL</span></div>
+                            <a href="https://dibbuferro.github.io/MaisonNoir/" target="_blank" class="btn-editorial primary">DEMO EN VIVO →</a>
+                        </div>
+                    </article>
+
+                    <article class="accordion-item">
+                        <div class="card-image"><img src="./resources/assets/velour.png" alt="Velour" class="img-fluid img-cover" ><div class="image-overlay"></div></div>
+                        <div class="card-content">
+                            <div class="card-meta font-mono"><span>14/15</span><span>MINIMAL</span></div>
+                            <h3 class="card-title">Velour</h3>
+                            <p class="card-desc">Experiencia web minimalista con maquetación limpia.</p>
+                            <div class="card-tags font-mono"><span>FRONTEND</span><span>CSS</span></div>
+                            <a href="https://dibbuferro.github.io/Velour/" target="_blank" class="btn-editorial primary">DEMO EN VIVO →</a>
+                        </div>
+                    </article>
+
+                    <article class="accordion-item">
+                        <div class="card-image"><img src="./resources/assets/bravos.png" alt="Bravos" class="img-fluid img-cover" ><div class="image-overlay"></div></div>
+                        <div class="card-content">
+                            <div class="card-meta font-mono"><span>15/15</span><span>BRANDING</span></div>
+                            <h3 class="card-title">Bravos</h3>
+                            <p class="card-desc">Landing page interactiva orientada a producto.</p>
+                            <div class="card-tags font-mono"><span>FRONTEND</span><span>DESIGN</span></div>
+                            <a href="https://dibbuferro.github.io/Bravos/" target="_blank" class="btn-editorial primary">DEMO EN VIVO →</a>
+                        </div>
+                    </article>
+                </div>
+
+            </div>
+        </section>
+        
     </main>
 
     <footer class="footer"></footer>
