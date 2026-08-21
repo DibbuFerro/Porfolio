@@ -158,7 +158,7 @@ webBtn.addEventListener('click', () => {
     // Mostrar el hero editorial
     const webMode = document.getElementById('web-mode');
     if (webMode) {
-        webMode.style.display = 'flex';
+        webMode.style.display = 'block';
     }
 });
 

@@ -21,69 +21,69 @@
 
     <div class="cursor-dot" id="curDot"></div>
     <div class="cursor-ring" id="curRing"></div>
+    <!-- Modal de bienvenida -->
+    <section class="modal" id="welcome">
+        <div class="modal-content modal-sm d-flex justify-content-center align-items-center flex-column row-gap-10">
+            <h2 class="font-serif text-uppercase text-center color-primary title-style">¡Bienvenido!</h2>
+            <div class="d-flex column-gap-15 justify-content-center" id="web-selector">
+                <button class="btn btn-primary" id="btn-web">Web clásica</button>
+                <button class="btn btn-primary" id="btn-game">Juego</button>
+            </div>
+            <div class="game-mode-selected d-flex justify-content-center align-items-center flex-column row-gap-10" id="game-mode-selected">
+                <p class="font-sans text-center">Mi porfolio es un poco diferente al estándar.</p>
+                <p class="font-sans text-center mb-2">Es un <b class="color-primary">Juego</b>, a medida que vayas superando los niveles, podrás ver más sobre mí.</p>
+                <button class="font-serif btn btn-primary close" id="startGame">Comenzar</button>
+            </div>
+        </div>
+    </section>
 
-    <main class="main">
+    <section class="game-mode vh-100 position-relative" id="gameMode" style="display: none;">
 
-        <!-- Modal de bienvenida -->
-        <section class="modal" id="welcome">
+        <button id="pauseBtn" class="font-serif btn btn-primary">Pausa</button>
+        <div class="pause-overlay" id="pauseOverlay">
+            <p class="font-serif color-primary">PAUSADO</p>
+        </div>
+        
+        <div class="game-ui">
+            <span class="font-serif color-primary" id="uiLevel">Nivel 1</span>
+            <span class="font-sans" id="uiScore">Score: 0</span>
+        </div>
+
+        <section class="modal" id="levelModal">
             <div class="modal-content modal-sm d-flex justify-content-center align-items-center flex-column row-gap-10">
-                <h2 class="font-serif text-uppercase text-center color-primary title-style">¡Bienvenido!</h2>
-                <div class="d-flex column-gap-15 justify-content-center" id="web-selector">
-                    <button class="btn btn-primary" id="btn-web">Web clásica</button>
-                    <button class="btn btn-primary" id="btn-game">Juego</button>
-                </div>
-                <div class="game-mode-selected d-flex justify-content-center align-items-center flex-column row-gap-10" id="game-mode-selected">
-                    <p class="font-sans text-center">Mi porfolio es un poco diferente al estándar.</p>
-                    <p class="font-sans text-center mb-2">Es un <b class="color-primary">Juego</b>, a medida que vayas superando los niveles, podrás ver más sobre mí.</p>
-                    <button class="font-serif btn btn-primary close" id="startGame">Comenzar</button>
-                </div>
+                <h2 class="font-serif text-center color-primary" id="modalTitle">¡Nivel Completado!</h2>
+                <p id="modalUpgrade" class="font-sans text-center color-primary"></p>
+                <div id="modalInfo" class="font-sans text-center"></div>
+                <button id="nextLevelBtn" class="font-serif btn btn-primary close">Siguiente Nivel</button>
             </div>
         </section>
 
-        <section class="game-mode vh-100 position-relative" id="gameMode" style="display: none;">
-
-            <button id="pauseBtn" class="font-serif btn btn-primary">Pausa</button>
-            <div class="pause-overlay" id="pauseOverlay">
-                <p class="font-serif color-primary">PAUSADO</p>
+        <section class="modal" id="gameOverModal">
+            <div class="modal-content modal-sm d-flex justify-content-center align-items-center flex-column row-gap-10">
+                <h2 class="font-serif text-center color-primary">Game Over</h2>
+                <p class="font-sans text-center" id="finalScore">Score: 0</p>
+                <p class="font-sans text-center" id="finalLevel">Nivel alcanzado: 1</p>
+                <button id="restartBtn" class="font-serif btn btn-primary">Volver a jugar</button>
             </div>
-            
-            <div class="game-ui">
-                <span class="font-serif color-primary" id="uiLevel">Nivel 1</span>
-                <span class="font-sans" id="uiScore">Score: 0</span>
-            </div>
-
-            <section class="modal" id="levelModal">
-                <div class="modal-content modal-sm d-flex justify-content-center align-items-center flex-column row-gap-10">
-                    <h2 class="font-serif text-center color-primary" id="modalTitle">¡Nivel Completado!</h2>
-                    <p id="modalUpgrade" class="font-sans text-center color-primary"></p>
-                    <div id="modalInfo" class="font-sans text-center"></div>
-                    <button id="nextLevelBtn" class="font-serif btn btn-primary close">Siguiente Nivel</button>
-                </div>
-            </section>
-
-            <section class="modal" id="gameOverModal">
-                <div class="modal-content modal-sm d-flex justify-content-center align-items-center flex-column row-gap-10">
-                    <h2 class="font-serif text-center color-primary">Game Over</h2>
-                    <p class="font-sans text-center" id="finalScore">Score: 0</p>
-                    <p class="font-sans text-center" id="finalLevel">Nivel alcanzado: 1</p>
-                    <button id="restartBtn" class="font-serif btn btn-primary">Volver a jugar</button>
-                </div>
-            </section>
-
-            <canvas id="gameCanvas"></canvas>
         </section>
+
+        <canvas id="gameCanvas"></canvas>
+    </section>
+
+    <main class="main" id="web-mode" style="display: none;">
+
 
         <!-- Hero editorial (web clásica) -->
         <nav id="nav">
             <ul class="navbar d-flex justify-content-between align-items-center">
                 <li class="logo"><span class="font-serif color-white">L</span><span class="font-serif color-white">F</span></li>
-                <li><a href="#" class="mono-label">Sobre mi</a></li>
-                <li><a href="#" class="mono-label">Tecnologias</a></li>
-                <li><a href="#" class="mono-label">Trabajos</a></li>
-                <li><a href="#" class="mono-label">Contacto</a></li>
+                <li><a href="#proyectos" class="mono-label">Proyectos</a></li>
+                <li><a href="#stack" class="mono-label">Stack</a></li>
+                <li><a href="#sobre-mi" class="mono-label">Sobre mi</a></li>
+                <li><a href="#contacto" class="mono-label">Contacto</a></li>
             </ul>
         </nav>
-        <header class="hero-editorial" id="web-mode" style="display: none;">
+        <header class="hero-editorial">
             <div class="ambient-glow"></div>
 
             <div class="meta-bar">
@@ -266,7 +266,7 @@
                         </div>
                     </article>
 
-                    <article class="accordion-item active">
+                    <article class="accordion-item">
                         <div class="card-image"><img src="./resources/assets/pinco.png" alt="Pinco" class="img-fluid img-cover" ><div class="image-overlay"></div></div>
                         <div class="card-content">
                             <div class="card-meta font-mono"><span>10/15</span><span>CMS</span></div>
@@ -281,7 +281,7 @@
                 <!-- FILA 03 (Proyectos 11 al 15) -->
                 <div class="editorial-accordion">
                 
-                    <article class="accordion-item">
+                    <article class="accordion-item active">
                         <div class="card-image"><img src="./resources/assets/construmax.png" alt="ConstruMax" class="img-fluid img-cover" ><div class="image-overlay"></div></div>
                         <div class="card-content">
                             <div class="card-meta font-mono"><span>11/15</span><span>ECOMMERCE</span></div>
@@ -338,6 +338,302 @@
                 </div>
 
             </div>
+        </section>
+
+        <section class="skills-section" id="stack">
+ 
+            <!-- ENCABEZADO -->
+            <div class="skills-header">
+                <div class="skills-meta font-mono">
+                    <span class="mono-label color-primary">CAPACIDADES</span>
+                    <span class="separator">/</span>
+                    <span class="mono-label">VALIDACIÓN</span>
+                </div>
+                <h2 class="skills-title font-serif text-uppercase">STACK<span class="accent-dot">.</span></h2>
+                <p class="skills-subtitle font-sans">
+                    Tecnologías con las que trabajo en producción real — no en tutoriales.<br>
+                    Los proyectos son la evidencia.
+                </p>
+            </div>
+        
+            <!-- GRID DE ÁREAS TÉCNICAS -->
+            <div class="tech-grid">
+        
+                <!-- BACKEND / CORE -->
+                <div class="tech-area">
+                    <div class="tech-area-header">
+                        <span class="tech-area-num font-mono color-primary">01</span>
+                        <div>
+                            <h3 class="tech-area-title font-serif">Backend & Arquitectura</h3>
+                            <span class="tech-area-badge font-mono">VALIDADO EN PRODUCCIÓN</span>
+                        </div>
+                    </div>
+                    <p class="tech-area-desc font-sans">
+                        Mi núcleo. +4 años diseñando sistemas escalables, CMS modulares, integraciones complejas 
+                        con APIs de terceros y arquitecturas multi-lenguaje. Validado en proyectos reales con 
+                        usuarios activos.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="tech-tag tech-tag--core font-mono">PHP</span>
+                        <span class="tech-tag tech-tag--core font-mono">Laravel</span>
+                        <span class="tech-tag tech-tag--core font-mono">Livewire</span>
+                        <span class="tech-tag tech-tag--core font-mono">MySQL</span>
+                        <span class="tech-tag tech-tag--core font-mono">Arquitectura MVC</span>
+                        <span class="tech-tag tech-tag--secondary font-mono">NodeJS</span>
+                        <span class="tech-tag tech-tag--secondary font-mono">Java POO</span>
+                    </div>
+                </div>
+        
+                <!-- FRONTEND -->
+                <div class="tech-area">
+                    <div class="tech-area-header">
+                        <span class="tech-area-num font-mono color-primary">02</span>
+                        <div>
+                            <h3 class="tech-area-title font-serif">Frontend & UI</h3>
+                            <span class="tech-area-badge font-mono">VALIDADO EN PRODUCCIÓN</span>
+                        </div>
+                    </div>
+                    <p class="tech-area-desc font-sans">
+                        Maquetación editorial, interfaces reactivas e interactividad avanzada. 
+                        Aplicado en todos los proyectos del portfolio — incluyendo este sitio.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="tech-tag tech-tag--core font-mono">JavaScript ES6+</span>
+                        <span class="tech-tag tech-tag--core font-mono">HTML5</span>
+                        <span class="tech-tag tech-tag--core font-mono">CSS3</span>
+                        <span class="tech-tag tech-tag--core font-mono">React JS</span>
+                        <span class="tech-tag tech-tag--secondary font-mono">jQuery</span>
+                        <span class="tech-tag tech-tag--secondary font-mono">AJAX</span>
+                    </div>
+                </div>
+        
+                <!-- BASES DE DATOS -->
+                <div class="tech-area">
+                    <div class="tech-area-header">
+                        <span class="tech-area-num font-mono color-primary">03</span>
+                        <div>
+                            <h3 class="tech-area-title font-serif">Bases de Datos</h3>
+                            <span class="tech-area-badge font-mono">VALIDADO EN PRODUCCIÓN</span>
+                        </div>
+                    </div>
+                    <p class="tech-area-desc font-sans">
+                        Diseño relacional, optimización de consultas complejas y normalización masiva de datos. 
+                        Reducción medible de tiempos de respuesta en sistemas críticos.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="tech-tag tech-tag--core font-mono">MySQL</span>
+                        <span class="tech-tag tech-tag--core font-mono">SQL Avanzado</span>
+                        <span class="tech-tag tech-tag--core font-mono">Diseño Relacional</span>
+                        <span class="tech-tag tech-tag--secondary font-mono">Optimización</span>
+                    </div>
+                </div>
+        
+                <!-- HERRAMIENTAS -->
+                <div class="tech-area">
+                    <div class="tech-area-header">
+                        <span class="tech-area-num font-mono color-primary">04</span>
+                        <div>
+                            <h3 class="tech-area-title font-serif">Herramientas & Flujo</h3>
+                            <span class="tech-area-badge tech-area-badge--neutral font-mono">DIARIO</span>
+                        </div>
+                    </div>
+                    <p class="tech-area-desc font-sans">
+                        Control de versiones, integración con servicios externos y metodologías ágiles 
+                        en equipos de trabajo reales.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="tech-tag tech-tag--core font-mono">Git / GitHub</span>
+                        <span class="tech-tag tech-tag--core font-mono">APIs REST</span>
+                        <span class="tech-tag tech-tag--core font-mono">JSON</span>
+                        <span class="tech-tag tech-tag--secondary font-mono">Scrum / Agile</span>
+                        <span class="tech-tag tech-tag--secondary font-mono">WordPress API</span>
+                        <span class="tech-tag tech-tag--secondary font-mono">PowerApps</span>
+                    </div>
+                </div>
+        
+            </div>
+        
+            <!-- SEPARADOR -->
+            <div class="skills-divider">
+                <span class="font-mono">[ CERTIFICACIONES & FORMACIÓN FORMAL ]</span>
+            </div>
+        
+            <!-- CERTIFICACIONES EN DOS COLUMNAS -->
+            <div class="certs-grid">
+        
+                <!-- COL IZQUIERDA: Certificaciones vigentes -->
+                <div class="certs-col">
+                    <p class="certs-col-label font-mono color-primary">CREDENCIALES EMITIDAS</p>
+        
+                    <div class="cert-item">
+                        <div class="cert-issuer font-mono">EDUCACIÓN IT — 2026</div>
+                        <div class="cert-name font-serif">Java Standard 18 / Web Programming</div>
+                    </div>
+        
+                    <div class="cert-item">
+                        <div class="cert-issuer font-mono">EDUCACIÓN IT — 2026</div>
+                        <div class="cert-name font-serif">Programación Orientada a Objetos con IA</div>
+                    </div>
+        
+                    <div class="cert-item">
+                        <div class="cert-issuer font-mono">EDUCACIÓN IT — 2026</div>
+                        <div class="cert-name font-serif">Introducción a Bases de Datos y SQL</div>
+                    </div>
+        
+                    <div class="cert-item">
+                        <div class="cert-issuer font-mono">ANTHROPIC — 2026</div>
+                        <div class="cert-name font-serif">AI Fluency Framework & Foundations</div>
+                    </div>
+        
+                    <div class="cert-item">
+                        <div class="cert-issuer font-mono">ANTHROPIC — 2026</div>
+                        <div class="cert-name font-serif">AI Capabilities, Limitations & Agent Skills</div>
+                    </div>
+        
+                    <div class="cert-item">
+                        <div class="cert-issuer font-mono">EDUCACIÓN IT — 2026</div>
+                        <div class="cert-name font-serif">Git: Desarrollo Colaborativo</div>
+                    </div>
+        
+                    <div class="cert-item">
+                        <div class="cert-issuer font-mono">EF SET — 2026</div>
+                        <div class="cert-name font-serif">English Certificate — C1 Advanced (70/100)</div>
+                    </div>
+        
+                    <div class="cert-item">
+                        <div class="cert-issuer font-mono">ORACLE / ALURA — 2023</div>
+                        <div class="cert-name font-serif">Oracle Next Education — Frontend & React</div>
+                    </div>
+        
+                    <div class="cert-item">
+                        <div class="cert-issuer font-mono">CODERHOUSE — 2022</div>
+                        <div class="cert-name font-serif">React JS / JavaScript / Desarrollo Web</div>
+                    </div>
+        
+                </div>
+        
+                <!-- COL DERECHA: En formación + educación formal -->
+                <div class="certs-col">
+                    <p class="certs-col-label font-mono color-primary">EN CURSO</p>
+        
+                    <div class="cert-item cert-item--active">
+                        <div class="cert-issuer font-mono">IFTS N°21 — 2025–2027</div>
+                        <div class="cert-name font-serif">Analista de Sistemas</div>
+                        <div class="cert-note font-sans">Formación universitaria técnica. En proceso.</div>
+                    </div>
+        
+                    <div class="cert-item cert-item--active">
+                        <div class="cert-issuer font-mono">EDUCACIÓN IT — 2026</div>
+                        <div class="cert-name font-serif">Ingeniero de Software Java</div>
+                        <div class="cert-note font-sans">Extensión del stack backend hacia Java enterprise.</div>
+                    </div>
+        
+                    <div class="cert-item cert-item--active">
+                        <div class="cert-issuer font-mono">EDUCACIÓN IT — 2026</div>
+                        <div class="cert-name font-serif">Desarrollo Backend en NodeJS</div>
+                        <div class="cert-note font-sans">Incorporando el ecosistema JS al backend.</div>
+                    </div>
+        
+                    <!-- NOTA HONESTA -->
+                    <div class="skills-note font-sans d-flex flex-column">
+                        <p><span class="skills-note-marker color-primary font-mono">→</span>
+                        PHP, Laravel, MySQL y las demás tecnologías del stack principal 
+                        no tienen certificado formal — se aprendieron y perfeccionaron 
+                        directamente en entornos de producción.</p>
+                        <br>
+                        <p><strong>Los proyectos son la validación.</strong></p>
+        
+                    </div>
+        
+                </div>
+        
+            </div>
+        
+        </section>
+
+         
+        <section class="about-section" id="sobre-mi">
+
+            <!-- TÍTULO FRAGMENTADO (ocupa el ancho completo) -->
+            <div class="about-hero-text flex-column justify-content-start">
+                <div class="skills-meta font-mono">
+                    <span class="mono-label color-primary">CONOCEME</span>
+                    <span class="mono-label">MEJOR</span>
+                </div>
+                <h2 class="about-big-word font-serif">SOBRE MÍ<span class="accent-dot">.</span></h2>
+                <div class="about-philosophy-inline font-sans">
+                    Creo que un producto digital es bueno cuando funciona sin fricciones 
+                    y da placer usarlo. Lo técnico y lo visual no son opuestos —
+                    son dos mitades del mismo trabajo.
+                </div>
+            </div>
+
+            <!-- LÍNEA DE TIEMPO HORIZONTAL -->
+            <div class="about-timeline">
+                <div class="about-tl-item">
+                    <span class="about-tl-year font-mono color-primary">2018 — 2020</span>
+                    <div class="about-tl-bar"></div>
+                    <p class="about-tl-text font-sans">
+                        Lideré una empresa de construcción y reparaciones junto a dos socios. 
+                        Cuando el COVID cerró los edificios, la empresa no sobrevivió, 
+                        y decidí no reconstruir lo mismo.
+                    </p>
+                    <span class="about-tl-label font-mono">ANTES</span>
+                </div>
+
+                <div class="about-tl-divider">
+                    <span class="about-tl-arrow color-primary font-serif">→</span>
+                </div>
+
+                <div class="about-tl-item">
+                    <span class="about-tl-year font-mono color-primary">2021 — HOY</span>
+                    <div class="about-tl-bar"></div>
+                    <p class="about-tl-text font-sans">
+                        Escribí mi primer "Hello World" en 2021. Para principios de 2023 
+                        ya estaba trabajando como desarrollador. Y mi objetivo actual es volverme ingeniero para 2030.
+                    </p>
+                    <span class="about-tl-label font-mono">AHORA</span>
+                </div>
+            </div>
+
+            <!-- HOBBIES: tarjetas indexadas -->
+            <div class="about-interests-header font-mono">[ FUERA DEL TRABAJO ]</div>
+
+            <div class="about-interests">
+                <div class="about-interest-card">
+                    <span class="about-interest-index font-serif">01</span>
+                    <div class="about-interest-content">
+                        <h3 class="about-interest-name font-serif">Videojuegos</h3>
+                        <p class="about-interest-desc font-sans">
+                            Desde chico amé los videojuegos — Legend of Mana, Stardew Valley, Skyrim 
+                            son algunos favoritos. Hoy estoy del otro lado, aprendiendo a crear juegos propios en Godot.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="about-interest-card">
+                    <span class="about-interest-index font-serif">02</span>
+                    <div class="about-interest-content">
+                        <h3 class="about-interest-name font-serif">Arte / Anime / Música</h3>
+                        <p class="about-interest-desc font-sans">
+                            El arte y la música me los inculcaron desde chico. Hoy como programador 
+                            intento crear experiencias que no solo sean eficientes, sino agradables 
+                            y visualmente atractivas.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="about-interest-card">
+                    <span class="about-interest-index font-serif">03</span>
+                    <div class="about-interest-content">
+                        <h3 class="about-interest-name font-serif">Cocinar</h3>
+                        <p class="about-interest-desc font-sans">
+                            No hay mucho que decir acá. Me gusta cocinar y me gusta comer <b class="color-primary">:D</b>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
         </section>
         
     </main>
