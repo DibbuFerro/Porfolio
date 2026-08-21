@@ -10,7 +10,7 @@ resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
 // Variables de estado del juego
-let projectiles = [];
+let projectiles = [];s
 let enemies = [];
 let score = 0;
 let gameOver = false;
@@ -383,11 +383,9 @@ function animate(){
     document.documentElement.style.setProperty('--color-primary-opacity', playerColor + '8d');
 }
 
-// Inicialización / Reinicio del juego
 let startBtn = document.getElementById('startGame');
 
 startBtn.addEventListener('click', () => {
-    // 1. Limpiar estados previos
     clearInterval(spawnInterval);
     if (animationFrameId) cancelAnimationFrame(animationFrameId);
 
@@ -403,7 +401,6 @@ startBtn.addEventListener('click', () => {
     document.getElementById('pauseBtn').style.display = 'block';
     document.querySelector('.game-ui').style.display = 'flex';
 
-    // 2. Iniciar timers y animación
     spawnInterval = setInterval(spawnEnemy, 2000);
     animate();
 });

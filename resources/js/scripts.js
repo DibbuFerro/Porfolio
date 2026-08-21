@@ -1,4 +1,3 @@
-/* ── PRELOADER Y APERTURA DE MODAL ── */
 window.addEventListener('load', () => {
     setTimeout(() => {
         document.getElementById('preloader').classList.add('gone');
@@ -14,7 +13,6 @@ function triggerCustomizeReveal() {
     }
 }
 
-/* ── MANIPULACIÓN Y CIERRE DE MODALES ── */
 function initModals() {
     document.querySelectorAll('[target-modal]').forEach(trigger => {
         trigger.addEventListener('click', e => {
@@ -45,7 +43,6 @@ function initModals() {
 
 document.addEventListener('DOMContentLoaded', initModals);
 
-/* ── CUSTOM CURSOR ── */
 const dot  = document.getElementById('curDot');
 const ring = document.getElementById('curRing');
 let mx = 0, my = 0, rx = 0, ry = 0;
@@ -80,7 +77,6 @@ document.addEventListener('mouseout', e => {
 });
 
 
-/* ── SELECTOR DE MODO ── */
 let webSelector = document.getElementById('web-selector');
 let gameSelector = document.getElementById('game-mode-selected');
 let gameBtn = document.getElementById('btn-game');
@@ -97,25 +93,21 @@ webBtn.addEventListener('click', () => {
     webSelector.style.display = 'flex';
 });
 
-/* ── INICIO DEL MODO JUEGO ── */
 if (strBtn) {
     strBtn.addEventListener('click', () => {
         const welcomeModal = document.getElementById('welcome');
         const gameModeSection = document.getElementById('gameMode');
 
-        // 1. Ocultar el modal de bienvenida
         welcomeModal.classList.add('closing');
         setTimeout(() => {
             welcomeModal.classList.remove('active', 'closing');
             welcomeModal.style.display = 'none';
         }, 800);
 
-        // 2. Mostrar la sección del juego
         if (gameModeSection) {
-            gameModeSection.style.display = 'block'; // O 'flex' según tus estilos
+            gameModeSection.style.display = 'block'; 
         }
 
-        // 3. Inicializar el loop o canvas del juego (si existe en game-script.js)
         if (typeof initGame === 'function') {
             initGame();
         }
@@ -123,7 +115,6 @@ if (strBtn) {
 }
 
 
-// Función para generar un color HSL aleatorio armónico
 function generarColorAleatorio() {
     const hue = Math.floor(Math.random() * 360);
     const saturation = 40 + Math.floor(Math.random() * 30); 
@@ -134,20 +125,16 @@ function generarColorAleatorio() {
     };
 }
 
-// Función principal que aplica el cambio de color al CSS
 function cambiarColor() {
     const nuevoColor = generarColorAleatorio();
     
-    // Aplicar a las CSS Variables del documento
     document.documentElement.style.setProperty('--color-primary', nuevoColor.solid);
     document.documentElement.style.setProperty('--color-primary-opacity', nuevoColor.opacity);
 }
 
 setInterval(cambiarColor, 2000);
 
-/* ── APERTURA DEL MODO WEB CLÁSICA ── */
 webBtn.addEventListener('click', () => {
-    // Cerrar el modal de bienvenida
     const welcomeModal = document.getElementById('welcome');
     welcomeModal.classList.add('closing');
     setTimeout(() => {
@@ -155,7 +142,6 @@ webBtn.addEventListener('click', () => {
         welcomeModal.style.display = 'none';
     }, 800);
 
-    // Mostrar el hero editorial
     const webMode = document.getElementById('web-mode');
     if (webMode) {
         webMode.style.display = 'block';
@@ -163,10 +149,6 @@ webBtn.addEventListener('click', () => {
 });
 
 
-
-// ==========================================
-// MULTI-ROW ACCORDION ISOLATED INTERACTION
-// ==========================================
 const accordions = document.querySelectorAll('.editorial-accordion');
 
 accordions.forEach(accordion => {

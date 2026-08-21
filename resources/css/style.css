@@ -245,7 +245,6 @@ a { text-decoration: none; color: inherit; }
 .title-style{font-weight: 800; line-height: 1.85; letter-spacing: -0.04em;}
 
 
-/* === SISTEMA DE MODALES === */
 .modal {
     position: fixed; inset: 0;
     background-color: #f1f1f18b;
@@ -293,7 +292,6 @@ a { text-decoration: none; color: inherit; }
     to   { opacity: 0; transform: translateY(-15px); }
 }
 
-/* === BOTONES (modales y UI del juego) === */
 .btn { padding: 10px 20px; transition: .8s; border: none; font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700;letter-spacing: 0.05em; text-transform:uppercase}
 .btn-primary { background: var(--color-primary); color: var(--color-background); outline: 1px solid var(--color-primary); }
 .btn-secondary { background: var(--color-background); color: var(--color-primary); outline: 1px solid var(--color-primary); }
@@ -304,7 +302,6 @@ a { text-decoration: none; color: inherit; }
 .game-mode-selected.active { display: flex; }
 
 
-/* === JUEGO === */
 #gameCanvas {
     position: absolute;
     top: 0; left: 0;
@@ -362,7 +359,6 @@ a { text-decoration: none; color: inherit; }
 .game-ui { display: none; }
 
 
-/* === HERO EDITORIAL === */
 .hero-editorial {
     position: relative;
     padding: 2.5rem 6vw 2rem 6vw;
@@ -384,7 +380,6 @@ a { text-decoration: none; color: inherit; }
     opacity: 0.4;
 }
 
-/* Meta bar */
 .meta-bar {
     position: relative;
     z-index: 1;
@@ -420,7 +415,6 @@ a { text-decoration: none; color: inherit; }
 
 .separator { opacity: 0.3; }
 
-/* Hero main */
 .hero-main {
     position: relative;
     z-index: 1;
@@ -490,7 +484,6 @@ a { text-decoration: none; color: inherit; }
     text-underline-offset: 4px;
 }
 
-/* CTA buttons del hero */
 .cta-group {
     display: flex;
     flex-wrap: wrap;
@@ -543,7 +536,6 @@ a { text-decoration: none; color: inherit; }
     transform: translateY(-2px);
 }
 
-/* Metrics strip */
 .metrics-strip {
     position: relative;
     z-index: 1;
@@ -593,14 +585,12 @@ nav{padding:1rem 6vw 1rem 6vw;}
 
 .logo span{font-size:35px}
 
-/* --- SECCIÓN PROYECTOS (EDITORIAL STYLE) --- */
 .projects-section {
     position: relative;
     padding: 6rem 5vw;
     border-top: 1px solid rgba(52, 50, 50, 0.15);
 }
 
-/* Encabezado */
 .section-header {
     display: grid;
     grid-template-columns: 1fr;
@@ -637,7 +627,6 @@ nav{padding:1rem 6vw 1rem 6vw;}
     color: #4a4848;
 }
 
-/* Items de Proyectos */
 .projects-list {
     display: flex;
     flex-direction: column;
@@ -659,7 +648,6 @@ nav{padding:1rem 6vw 1rem 6vw;}
         gap: 4rem;
     }
 
-    /* Modificador para alternar el lado visual/información */
     .project-item.reverse {
         grid-template-columns: 1.2fr 1fr;
     }
@@ -673,7 +661,6 @@ nav{padding:1rem 6vw 1rem 6vw;}
     }
 }
 
-/* Meta & Textos */
 .project-meta {
     display: flex;
     gap: 1.5rem;
@@ -699,7 +686,6 @@ nav{padding:1rem 6vw 1rem 6vw;}
     margin-bottom: 1.5rem;
 }
 
-/* Tags de Tecnologías */
 .project-tags {
     display: flex;
     flex-wrap: wrap;
@@ -722,7 +708,6 @@ nav{padding:1rem 6vw 1rem 6vw;}
     flex-wrap: wrap;
 }
 
-/* Visual Frame / Previsualización */
 .visual-frame {
     width: 100%;
     aspect-ratio: 16 / 10;
@@ -752,9 +737,6 @@ nav{padding:1rem 6vw 1rem 6vw;}
     background: linear-gradient(135deg, #1e1e1e 0%, #111111 100%);
 }
 
-/******************/
-
-/* --- MULTI-ROW ACCORDION (FLEXBOX ONLY) --- */
 .innovative-slider-section {
     padding: 6rem 5vw;
     border-top: 1px solid rgba(52, 50, 50, 0.15);
@@ -774,7 +756,6 @@ nav{padding:1rem 6vw 1rem 6vw;}
     letter-spacing: 0.05em;
 }
 
-/* Fila individual */
 .editorial-accordion {
     display: flex;
     flex-direction: row;
@@ -783,9 +764,8 @@ nav{padding:1rem 6vw 1rem 6vw;}
     width: 100%;
 }
 
-/* Items de 5 por fila */
 .accordion-item {
-    flex: 1 1 10%; /* Ancho comprimido por defecto */
+    flex: 1 1 10%; 
     position: relative;
     border-radius: 6px;
     overflow: hidden;
@@ -797,10 +777,9 @@ nav{padding:1rem 6vw 1rem 6vw;}
     transition: flex 0.5s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease;
 }
 
-/* Expansión al interactuar */
 .accordion-item.active,
 .accordion-item:hover {
-    flex: 4 1 50%; /* Se expande ocupando el mayor espacio de su fila */
+    flex: 4 1 50%; 
     border-color: var(--color-primary);
 }
 
@@ -838,10 +817,9 @@ nav{padding:1rem 6vw 1rem 6vw;}
     opacity: 0;
     transform: translateY(15px);
     transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
-    white-space: nowrap; /* Evita saltos bruscos durante la animación */
+    white-space: nowrap; 
 }
 
-/* Solo muestra el texto de la tarjeta activa en esa fila */
 .accordion-item.active .card-content,
 .accordion-item:hover .card-content {
     opacity: 1;
@@ -1033,7 +1011,6 @@ nav{padding:1rem 6vw 1rem 6vw;}
     border: 1px solid rgba(52, 50, 50, 0.2);
 }
  
-/* === SEPARADOR === */
 .skills-divider {
     text-align: center;
     font-size: 0.7rem;
@@ -1056,7 +1033,6 @@ nav{padding:1rem 6vw 1rem 6vw;}
 .skills-divider::before { left: 0; }
 .skills-divider::after { right: 0; }
  
-/* === CERTIFICACIONES === */
 .certs-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1113,7 +1089,6 @@ nav{padding:1rem 6vw 1rem 6vw;}
     line-height: 1.4;
 }
  
-/* === NOTA HONESTA === */
 .skills-note {
     margin-top: 2rem;
     padding: 1.2rem 1.5rem;
@@ -1134,7 +1109,6 @@ nav{padding:1rem 6vw 1rem 6vw;}
     margin-top: 0.05rem;
 }
 
-/* === ABOUT SECTION === */
 .about-section {
     background: var(--black);
     color: var(--color-white);
@@ -1143,14 +1117,13 @@ nav{padding:1rem 6vw 1rem 6vw;}
     flex-direction: column;
     gap: 2rem;
     clip-path: polygon(
-    0% 6vw,       /* Esquina superior izquierda (bajada) */
-    100% 0%,      /* Esquina superior derecha */
-    100% calc(100% - 6vw), /* Esquina inferior derecha (subida) */
-    0% 100%       /* Esquina inferior izquierda */
+    0% 6vw,     
+    100% 0%,    
+    100% calc(100% - 6vw), 
+    0% 100%      
   );
 }
 
-/* TÍTULO FRAGMENTADO */
 .about-hero-text {
     display: flex;
     align-items: start;
@@ -1177,7 +1150,6 @@ nav{padding:1rem 6vw 1rem 6vw;}
     padding-left: 1.5rem;
 }
 
-/* LÍNEA DE TIEMPO HORIZONTAL */
 .about-timeline {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
@@ -1252,7 +1224,6 @@ nav{padding:1rem 6vw 1rem 6vw;}
     font-weight: 800;
 }
 
-/* HOBBIES */
 .about-interests-header {
     font-size: 0.65rem;
     letter-spacing: 0.12em;
